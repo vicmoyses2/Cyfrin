@@ -19,6 +19,11 @@ contract SimpleStorage {
         string name;
     }
 
+    // mapping is like a dictionary, when you search something, it returns what that means or is linked to
+    // In this case when you declare a persons name and his number, you can search what is that person favorite number later
+    // whitout looking into every index in a list to view it
+    mapping(string => uint256) public nameToFavoriteNumber;
+
     // After creating our personalize variable, we declare it as list/array
     Person[] public listOfPeople;
 
@@ -32,6 +37,6 @@ contract SimpleStorage {
 
     function addPerson(string memory _name, uint256 _favoriteNumber) public {
         listOfPeople.push( Person(_favoriteNumber, _name)); // Solidity first run inside the parenteses than do the push
+        nameToFavoriteNumber[_name] = _favoriteNumber;
     }
 }
-//teste2

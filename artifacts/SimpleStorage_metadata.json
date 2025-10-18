@@ -61,6 +61,25 @@
 				"type": "function"
 			},
 			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"name": "nameToFavoriteNumber",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
 				"inputs": [],
 				"name": "retrieve",
 				"outputs": [
@@ -115,11 +134,11 @@
 	},
 	"sources": {
 		"SoliditySmartContractDevelopment/SimpleStorage.sol": {
-			"keccak256": "0x49f870b0b7b33bdccb40772862792323334e6b34deb48443fcc090af98592bfb",
+			"keccak256": "0x4dc63dc1af2d307039f85caace95cb101c82e3241cbbbdac9f5015a407cdd11c",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://459cb49d362cc754183903d818c0f1d2ec2662b516b19142b4915e8d12f9a73c",
-				"dweb:/ipfs/QmcMuM7rXWAqxLQt1brvhkkefRMdmC7YT49PWLF2gndVxd"
+				"bzz-raw://a1bce7b141b9bbf52fed2c40fa1a73a5175897ae164b16aadb809b3b0dd68898",
+				"dweb:/ipfs/QmWQSPR3V1hoJoZGVhyJc1s1XLTp1LKa6r621SKpSkkX4N"
 			]
 		}
 	},
