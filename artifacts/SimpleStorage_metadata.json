@@ -134,11 +134,11 @@
 	},
 	"sources": {
 		"SoliditySmartContractDevelopment/SimpleStorage.sol": {
-			"keccak256": "0x4dc63dc1af2d307039f85caace95cb101c82e3241cbbbdac9f5015a407cdd11c",
+			"keccak256": "0xb9a8c7d82f731341fffa97e0c40f42b430d8aa6a2fc5c91e37a6a13177c6f614",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://a1bce7b141b9bbf52fed2c40fa1a73a5175897ae164b16aadb809b3b0dd68898",
-				"dweb:/ipfs/QmWQSPR3V1hoJoZGVhyJc1s1XLTp1LKa6r621SKpSkkX4N"
+				"bzz-raw://f7b3dd43f59a89bf5b02a2b189b43952ef6ce150f976003cc86ef2d479afb317",
+				"dweb:/ipfs/QmVBnYubxaJXEjPHmJRAAcmySS6YrHjXY5RSY2j4YUjnQN"
 			]
 		}
 	},
