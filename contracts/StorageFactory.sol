@@ -20,6 +20,8 @@ contract SotrageFactory{
     function sfStore(uint256 _simpleStorageIndex, uint256 _newSimpleStorageNumber) public {
         SimpleStorage mySimpleStorage = listOfSimpleStorageContracts[_simpleStorageIndex];
         mySimpleStorage.store(_newSimpleStorageNumber);
+        //or
+        //listOfSimpleStorageContracts[_simpleStorageIndex].store(_newSimpleStorageNumber);
     }
 
     function sfGet(uint256 _simpleStorageIndex) public view returns(uint256){

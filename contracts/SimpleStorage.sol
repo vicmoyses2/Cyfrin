@@ -5,7 +5,7 @@ pragma solidity ^0.8.24; // solidity version - informando a versão do solidity
 // "^" allow the compiler to use the informed version or above - permite o compilador usar a versão informada ou superior
 
 contract SimpleStorage {
-    uint256 public myfavoriteNumber;  // uint256 - only positive integer numbers - 256 is the amount of bits (NOT bytes)
+    uint256 public myFavoriteNumber;  // uint256 - only positive integer numbers - 256 is the amount of bits (NOT bytes)
                                     // if the number isn't declared, is set the value 0
     
     // uint256[] mylistOfFavoriteNumbers;
@@ -27,12 +27,12 @@ contract SimpleStorage {
     // After creating our personalize variable, we declare it as list/array
     Person[] public listOfPeople;
 
-    function store(uint256 my_favoriteNumber) public {
-        myfavoriteNumber = my_favoriteNumber;
+    function store(uint256 my_favoriteNumber) public virtual {
+        myFavoriteNumber = my_favoriteNumber;
     }
 
     function retrieve() public view returns(uint256){
-        return myfavoriteNumber;
+        return myFavoriteNumber;
     }
 
     function addPerson(string memory _name, uint256 _favoriteNumber) public {
