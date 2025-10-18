@@ -26,5 +26,4 @@ contract SotrageFactory{
         return listOfSimpleStorageContracts[_simpleStorageIndex].retrieve();
     }
 
-
 }
