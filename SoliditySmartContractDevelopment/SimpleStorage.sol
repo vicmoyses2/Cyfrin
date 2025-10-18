@@ -34,3 +34,4 @@ contract SimpleStorage {
         listOfPeople.push( Person(_favoriteNumber, _name)); // Solidity first run inside the parenteses than do the push
     }
 }
+//teste
