@@ -18,10 +18,13 @@ contract FundMe {
     address[] public funders;
     mapping(address funder => uint256 amountFunded) public addressToAmountFunded;
 
-    address public owner;
+    address public immutable i_owner;
+
+    error NotOwner();
+    error CallFailed();
 
     constructor(){
-        owner = msg.sender;
+        i_owner = msg.sender;
     }
 
     function fund() public payable {
@@ -94,11 +97,14 @@ contract FundMe {
         require(callSuccess, "Call failed");
         */
         (bool callSuccess, ) = payable(msg.sender).call{value: address(this).balance}("");
-        require(callSuccess, "Call failed");
+        //require(callSuccess, "Call failed");
+        if (!callSuccess) {revert CallFailed();}
     }
 
     modifier onlyOwner() { // There is no need to put visibility (Ex: public, private) in a modifier
-        require(msg.sender == owner, "Send is not the owner");
+        //require(msg.sender == i_owner, "Send is not the owner");
+        if(msg.sender != i_owner) {revert NotOwner();}
+
         _; // This means that the modifier will execute the code befor the "_;" and then run the code from the function
 
         /* If put like this:
