@@ -7,8 +7,34 @@
 
 pragma solidity ^0.8.24;
 
-//import {AggregatorV3Interface} from "@chainlink/contracts/src/v0.8/shared/interfaces/AggregatorV3Interface.sol";
-import {PriceConverter} from "./PriceConverter.sol";
+import {AggregatorV3Interface} from "@chainlink/contracts/src/v0.8/shared/interfaces/AggregatorV3Interface.sol";
+
+library PriceConverter {
+
+    function getPrice() internal view returns(uint256){
+        // Contract Adders - 0x6D41d1dc818112880b40e26BD6FD347E41008eDA
+        // ABI
+        AggregatorV3Interface priceFeed = AggregatorV3Interface(0x6D41d1dc818112880b40e26BD6FD347E41008eDA);
+        (,int256 price,,,) = priceFeed.latestRoundData();
+        return uint256(price * 1e10);
+    }
+
+    function getConversionRate(uint256 ethAmount) internal view returns(uint256){
+        // 1 ETH = 1,000000000000000000 (18 decimals)
+        // ETH / USD = 2.000,000000000000000000 (18 decimals)
+
+        uint256 ethPrice = getPrice();
+
+        // 2.000,000000000000000000 * 1,000000000000000000 = 2.000,000000000000000000000000000000000000 (2k,1e36)
+        // Dividing it by 1e18, it return to 18 zeros after the comma.
+        uint256 ethAmountInUsd = (ethPrice * ethAmount) / 1e18;
+        return ethAmountInUsd;        
+    }
+
+    function getVerson() internal view returns (uint256) {
+        return AggregatorV3Interface(0x6D41d1dc818112880b40e26BD6FD347E41008eDA).version();
+    }
+}
 
 contract FundMe {
     using PriceConverter for uint256;
@@ -41,9 +67,9 @@ contract FundMe {
 
 
     /*function getPrice() public view returns(uint256){
-        // Contract Adders - 0x694AA1769357215DE4FAC081bf1f309aDC325306
+        // Contract Adders - 0x6D41d1dc818112880b40e26BD6FD347E41008eDA
         // ABI
-        AggregatorV3Interface priceFeed = AggregatorV3Interface(0x694AA1769357215DE4FAC081bf1f309aDC325306);
+        AggregatorV3Interface priceFeed = AggregatorV3Interface(0x6D41d1dc818112880b40e26BD6FD347E41008eDA);
         (,int256 price,,,) = priceFeed.latestRoundData();
         return uint256(price * 1e10);
     }
@@ -59,10 +85,10 @@ contract FundMe {
         uint256 ethAmountInUsd = (ethPrice * ethAmount) / 1e18;
         return ethAmountInUsd;        
     }
-    
+    */
     function getVerson() public view returns (uint256) {
-        return AggregatorV3Interface(0x694AA1769357215DE4FAC081bf1f309aDC325306).version();
-    }*/
+        return AggregatorV3Interface(0x6D41d1dc818112880b40e26BD6FD347E41008eDA).version(); // ZKSync Testnet
+    }
 
     function withdraw() onlyOwner public {
         // require(msg.sender == owner, "Must be the owner!");
