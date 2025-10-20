@@ -11,13 +11,18 @@ import {AggregatorV3Interface} from "@chainlink/contracts/src/v0.8/shared/interf
 
 contract FundMe {
 
-    uint256 public minimumUsd = 5 * 1e18; // == 5 * (10 ** 18) -- In Solidity "^" is represented with "**"
+    uint256 public minimumUsd = 5e18; // == 5 * 1e18 == 5 * (10 ** 18) -- In Solidity "^" is represented with "**"
+    address[] public funders;
+    mapping(address funder => uint256 amountFunded) public addressToAmountFunded;
 
     function fund() public payable {
         // Allow user to send $
         // Have a minum $ sent - USD $5        
         require(getConversionRate(msg.value) >= minimumUsd, "not engough ETH");
+        funders.push(msg.sender);
+        addressToAmountFunded[msg.sender] = addressToAmountFunded[msg.sender] + msg.value;
     }
+
 
     function getPrice() public view returns(uint256){
         // Contract Adders - 0x694AA1769357215DE4FAC081bf1f309aDC325306
