@@ -113,4 +113,9 @@ contract FundMe {
         Will execeute the conde from the function and then the code from the modifier*/
 
     }
+
+    // Sending money without calling the fund function
+    receive() external payable { fund(); }
+
+    fallback() external payable { fund(); }
 }
