@@ -61,5 +61,29 @@ contract FundMe {
             address funder = funders[funderIndex];
             addressToAmountFunded[funder] = 0;
         }
+        // Reseting the array variable
+        funders = new address[](0);
+
+        // 3 ways to withdraw the money
+        /*
+        // 1 - transfer - Automatically revert if fails - Too much gas
+        payable(msg.sender).transfer(address(this).balance); // "address(this)" is refering to this contract address
+            // "msg.sender" is an address
+            // "payable(msg.sender)" is a payable address
+
+
+        // 2 - send - Don't automatically revert if fails - Too much gas
+        payable(msg.sender).send(address(this).balance);
+        // Code to revert using "require"
+        bool sendSucces = payable(msg.sender).send(address(this).balance);
+        require(sendSucces, "Send failed"); // If it fail, will revert
+
+        // 3 - call - Low level code - Low gas cost
+        // "call" uses 2 variable but we only need one for now - leave the comma
+        (bool callSuccess, ) = payable(msg.sender).call{value: address(this).balance}("");
+        require(callSuccess, "Call failed");
+        */
+        (bool callSuccess, ) = payable(msg.sender).call{value: address(this).balance}("");
+        require(callSuccess, "Call failed");
     }
 }
