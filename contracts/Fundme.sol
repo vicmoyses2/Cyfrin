@@ -12,11 +12,11 @@ import {AggregatorV3Interface} from "@chainlink/contracts/src/v0.8/shared/interf
 library PriceConverter {
 
     function getPrice() internal view returns(uint256){
-        // Contract Adders - 0x6D41d1dc818112880b40e26BD6FD347E41008eDA
+        // Contract Adders - 0xfEefF7c3fB57d18C5C6Cdd71e45D2D0b4F9377bF
         // ABI
-        AggregatorV3Interface priceFeed = AggregatorV3Interface(0x6D41d1dc818112880b40e26BD6FD347E41008eDA);
-        (,int256 price,,,) = priceFeed.latestRoundData();
-        return uint256(price * 1e10);
+        AggregatorV3Interface priceFeed = AggregatorV3Interface(0xfEefF7c3fB57d18C5C6Cdd71e45D2D0b4F9377bF);
+        (,int256 answer,,,) = priceFeed.latestRoundData();
+        return uint256(answer * 1e10);
     }
 
     function getConversionRate(uint256 ethAmount) internal view returns(uint256){
@@ -32,7 +32,7 @@ library PriceConverter {
     }
 
     function getVerson() internal view returns (uint256) {
-        return AggregatorV3Interface(0x6D41d1dc818112880b40e26BD6FD347E41008eDA).version();
+        return AggregatorV3Interface(0xfEefF7c3fB57d18C5C6Cdd71e45D2D0b4F9377bF).version();
     }
 }
 
@@ -67,9 +67,9 @@ contract FundMe {
 
 
     /*function getPrice() public view returns(uint256){
-        // Contract Adders - 0x6D41d1dc818112880b40e26BD6FD347E41008eDA
+        // Contract Adders - 0xfEefF7c3fB57d18C5C6Cdd71e45D2D0b4F9377bF
         // ABI
-        AggregatorV3Interface priceFeed = AggregatorV3Interface(0x6D41d1dc818112880b40e26BD6FD347E41008eDA);
+        AggregatorV3Interface priceFeed = AggregatorV3Interface(0xfEefF7c3fB57d18C5C6Cdd71e45D2D0b4F9377bF);
         (,int256 price,,,) = priceFeed.latestRoundData();
         return uint256(price * 1e10);
     }
@@ -86,8 +86,9 @@ contract FundMe {
         return ethAmountInUsd;        
     }
     */
-    function getVerson() public view returns (uint256) {
-        return AggregatorV3Interface(0x6D41d1dc818112880b40e26BD6FD347E41008eDA).version(); // ZKSync Testnet
+    function getVersion() public view returns (uint256) {
+        AggregatorV3Interface priceFeed = AggregatorV3Interface(0xfEefF7c3fB57d18C5C6Cdd71e45D2D0b4F9377bF);
+        return priceFeed.version();
     }
 
     function withdraw() onlyOwner public {
