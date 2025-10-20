@@ -13,15 +13,22 @@ import {PriceConverter} from "./PriceConverter.sol";
 contract FundMe {
     using PriceConverter for uint256;
 
-    uint256 public minimumUsd = 5e18; // == 5 * 1e18 == 5 * (10 ** 18) -- In Solidity "^" is represented with "**"
+    uint256 public constant MINIMUM_USD = 5e18; // == 5 * 1e18 == 5 * (10 ** 18) -- In Solidity "^" is represented with "**"
+
     address[] public funders;
     mapping(address funder => uint256 amountFunded) public addressToAmountFunded;
+
+    address public owner;
+
+    constructor(){
+        owner = msg.sender;
+    }
 
     function fund() public payable {
         // Allow user to send $
         // Have a minum $ sent - USD $5        
-        //require(getConversionRate(msg.value) >= minimumUsd, "not engough ETH");
-        require(msg.value.getConversionRate() >= minimumUsd, "not engough ETH");
+        //require(getConversionRate(msg.value) >= MINIMUM_USD, "not engough ETH");
+        require(msg.value.getConversionRate() >= MINIMUM_USD, "not engough ETH");
         funders.push(msg.sender);
 
         // The address that donate previously will receive the value of the new donation added to the amount donated
@@ -54,7 +61,10 @@ contract FundMe {
         return AggregatorV3Interface(0x694AA1769357215DE4FAC081bf1f309aDC325306).version();
     }*/
 
-    function withdraw() public {
+    function withdraw() onlyOwner public {
+        // require(msg.sender == owner, "Must be the owner!");
+        // If we need to specify the owner in a numbers of functions, we can use a "modifier"
+
         // for loop structer
         // for(starting index, ending index, step amount){code here}
         for(uint256 funderIndex = 0; funderIndex < funders.length; funderIndex++){
@@ -85,5 +95,16 @@ contract FundMe {
         */
         (bool callSuccess, ) = payable(msg.sender).call{value: address(this).balance}("");
         require(callSuccess, "Call failed");
+    }
+
+    modifier onlyOwner() { // There is no need to put visibility (Ex: public, private) in a modifier
+        require(msg.sender == owner, "Send is not the owner");
+        _; // This means that the modifier will execute the code befor the "_;" and then run the code from the function
+
+        /* If put like this:
+        _;
+        require(msg.sender = owner, "Send is not the owner");
+        Will execeute the conde from the function and then the code from the modifier*/
+
     }
 }
