@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
 
-pragma solidity ^0.8.24; // solidity version - informando a versão do solidity
+pragma solidity ^0.8.23; // solidity version - informando a versão do solidity
 
 // "^" allow the compiler to use the informed version or above - permite o compilador usar a versão informada ou superior
 
