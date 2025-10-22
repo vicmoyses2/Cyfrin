@@ -7,7 +7,7 @@ pragma solidity ^0.8.24; // solidity version - informando a versão do solidity
 contract SimpleStorage {
     uint256 public myFavoriteNumber;  // uint256 - only positive integer numbers - 256 is the amount of bits (NOT bytes)
                                     // if the number isn't declared, is set the value 0
-    
+    uint256 public myFavoriteNumber2;
     // uint256[] mylistOfFavoriteNumbers;
     // the bracket ([]) inform that is a list/array Example: [0, 15, 68, ...]
     // Without specifying the number of list/array, is an Dynamic Array, can grow and shrink as it is used
