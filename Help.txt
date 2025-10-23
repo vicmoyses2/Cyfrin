@@ -41,4 +41,5 @@ cast wallet import <KEY_NAME> --interactive // using --interactive is the way th
                                             // private key without revealing it on text
 sepoliaKey // PRIVATE_KEY stored using keystore encryption
 0x6bab4333a8cabe29dbf9542aa99d92e639c28436 // Keystore address from sepoliaKey
+cast wallet list // View the keystore list
 
