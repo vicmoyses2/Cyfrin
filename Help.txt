@@ -5,7 +5,7 @@ anvil // Initiate a local blockchain to deploy and test the contracts
       // Always check if the pathname for the folder is correct, it often gets back to the root folder
 
 forge create <CONTRACT_NAME> --broadcast --interactive // Deploy a contract in the local blockchain
---broadcast // Broadcast the transaction
+--broadcast // Broadcast the transaction, if dosn't explicit it, will only simulate the broadcasting
 --interactive // Open an interactive prompt to enter your private key
 
 forge script script/DeploySimpleStorage.s.sol --rpc-url $RPC_URL --private-key $PRIVATE_KEY --broadcast
