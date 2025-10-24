@@ -1,5 +1,8 @@
-// Password will be requested.
-// FYI: For anvil keys, is the notebook pin number.
+## Keystore
+### List of my keystore
+
+Password will be requested when using it in the terminal.
+Obs: For anvil fake private keys, is the notebook pin number.
 
 sepoliaKey - 0x6bab4333a8cabe29dbf9542aa99d92e639c28436
 

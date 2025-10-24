@@ -1,17 +1,20 @@
-Commands to use in the terminal:
+## Commands to use in the terminal:
+### Some personal guidance written among the course
 
-'''
+```
 anvil // Initiate a local blockchain to deploy and test the contracts
       // When initiate the local blockchain, you must open a neu terminal to use/deploy
       // Always check if the pathname for the folder is correct, it often gets back to the root folder
-'''
-
+```
+```
 forge build <CONTRACT_NAME> // Compile the contract
-
+```
+```
 forge create <CONTRACT_NAME> --broadcast --interactive // Deploy a contract in the local blockchain
 --broadcast // Broadcast the transaction, if dosn't explicit it, will only simulate the broadcasting
 --interactive // Open an interactive prompt to enter your private key
-
+```
+```
 forge script script/DeploySimpleStorage.s.sol --rpc-url $RPC_URL --private-key $PRIVATE_KEY --broadcast
 forge script script/<SCRIPT_NAME> --rpc-url <RPC_URL> --private-key <PRIVATE_KEY> --broadcast
 forge script // Run a smart contract as a script
@@ -23,7 +26,8 @@ forge script script/DeploySimpleStorage.s.sol --rpc-url $SEPOLIA_RPC_URL --accou
 forge script script/<SCRIPT_NAME> --rpc-url <RPC_URL> --account <KEY_NAME> --sender <KEY_ADDRESS> --broadcast
 <KEY_NAME> // The private key name from keystore
 <KEY_ADDRESS> // The public address related to the private key
-
+```
+```
 cast send 0x5FbDB2315678afecb367f032d93F642f64180aa3 "store(uint256)" 123 --rpc-url $RPC_URL --private-key $PRIVATE_KEY
 cast send <CONTRACT_ADDRESS> "<FUNCTION_NAME>(<INPUT_FORMAT>)" <INPUT_VALUE> --rpc-url <RPC_URL> --private-key <PRIVATE_KEY>
 cast send // Sign and publish a transaction, the command contains: cast send [OPTIONS] [TO] [SIG] [ARGS]... [COMMAND]
@@ -31,7 +35,8 @@ cast send // Sign and publish a transaction, the command contains: cast send [OP
 [TO] // Is the contract address
 [SIG] // The signature of the function to call, the function name and the input value
 [ARGS] // The argument of the funcion, the input value
-
+```
+```
 cast call 0x5FbDB2315678afecb367f032d93F642f64180aa3 "retrieve()"
 cast call <CONTRACT_ADDRESS> "<FUNCTION_NAME>()"
 cast call // Perform a call on an account without publishing a transaction
@@ -39,11 +44,12 @@ cast call // Perform a call on an account without publishing a transaction
                     // If the call function returns a value, will be a HEX value
 cast --to-base 0x000000000000000000000000000000000000000000000000000000000000007b dec
 cast [OPTIONS] <HEX_NUMBER> <NEW_BASE_NUMBER>
-
+```
+```
 cast wallet import sepoliaKey --interactive
 cast wallet import <KEY_NAME> --interactive // using --interactive is the way that you can insert the
                                             // private key without revealing it on text
 sepoliaKey // PRIVATE_KEY stored using keystore encryption
 0x6bab4333a8cabe29dbf9542aa99d92e639c28436 // Keystore address from sepoliaKey
 cast wallet list // View the keystore list
-
+```
