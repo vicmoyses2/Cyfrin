@@ -1,8 +1,12 @@
 Commands to use in the terminal:
 
+'''
 anvil // Initiate a local blockchain to deploy and test the contracts
       // When initiate the local blockchain, you must open a neu terminal to use/deploy
       // Always check if the pathname for the folder is correct, it often gets back to the root folder
+'''
+
+forge build <CONTRACT_NAME> // Compile the contract
 
 forge create <CONTRACT_NAME> --broadcast --interactive // Deploy a contract in the local blockchain
 --broadcast // Broadcast the transaction, if dosn't explicit it, will only simulate the broadcasting
