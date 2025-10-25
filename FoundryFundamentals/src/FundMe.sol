@@ -5,7 +5,9 @@ pragma solidity ^0.8.24;
 import {AggregatorV3Interface} from "@chainlink/contracts/src/v0.8/shared/interfaces/AggregatorV3Interface.sol";
 import {PriceConverter} from "./PriceConverter.sol";
 
-error FundMe__NotOwner(); // 
+error FundMe__NotOwner(); // Using the name of the contract as a prefix is
+                          // a convention to help identify where the error
+                          // is coming from, from which contract.
 
 contract FundMe {
     using PriceConverter for uint256;
@@ -35,7 +37,7 @@ contract FundMe {
 
     modifier onlyOwner() {
         // require(msg.sender == owner);
-        if (msg.sender != i_owner) revert NotOwner();
+        if (msg.sender != i_owner) revert FundMe__NotOwner();
         _;
     }
 
