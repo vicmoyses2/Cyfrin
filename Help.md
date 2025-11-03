@@ -2,9 +2,19 @@
 ### Some personal guidance written among the course
 
 ```
+curl -L https://foundry.paradigm.xyz | bash // Install foundry directly
+
+curl -L https://raw.githubusercontent.com/matter-labs/foundry-zksync/main/install-foundry-zksync | bash // Install foundry-zksync directly
+
+foundryup // Initiate foundry (NOT Zksync)
+
+foundryup-zksync // Initiate foundry to Zksync Testnet
+
+```
 anvil // Initiate a local blockchain to deploy and test the contracts
       // When initiate the local blockchain, you must open a neu terminal to use/deploy
       // Always check if the pathname for the folder is correct, it often gets back to the root folder
+anvil-zksync / Initiate for Zksync local blockchain
 ```
 ```
 forge build <CONTRACT_NAME> // Compile the contract
