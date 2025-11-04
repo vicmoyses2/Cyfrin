@@ -25,6 +25,32 @@ forge create <CONTRACT_NAME> --broadcast --interactive // Deploy a contract in t
 --interactive // Open an interactive prompt to enter your private key
 ```
 ```
+forge test --fork-url $SEPOLIA_RPC_URL // Test a contract using the Sepolia Testnet RPC_URL to simulate going to a real blockchain
+
+forge test --macht-test testPriceFeedVersionIsAccurate -vvv // Test a specific function, can use "--mt" instead of "--match-test"
+forge test --mt <FUNCTION_NAME> -vvv
+```
+```
+forge coverage --fork-url $SEPOLIA_RPC_URL // Can see how much of the code was tested
+/* Return example:
+╭----------------------------------+---------------+---------------+---------------+---------------╮
+| File                             | % Lines       | % Statements  | % Branches    | % Funcs       |
++==================================================================================================+
+| script/DeployFundMe.s.sol        | 0.00% (0/4)   | 0.00% (0/3)   | 100.00% (0/0) | 0.00% (0/1)   |
+|----------------------------------+---------------+---------------+---------------+---------------|
+| script/DeploySimpleStorage.s.sol | 0.00% (0/5)   | 0.00% (0/5)   | 100.00% (0/0) | 0.00% (0/1)   |
+|----------------------------------+---------------+---------------+---------------+---------------|
+| src/FundMe.sol                   | 20.83% (5/24) | 23.81% (5/21) | 0.00% (0/5)   | 28.57% (2/7)  |
+|----------------------------------+---------------+---------------+---------------+---------------|
+| src/PriceConverter.sol           | 0.00% (0/8)   | 0.00% (0/10)  | 100.00% (0/0) | 0.00% (0/2)   |
+|----------------------------------+---------------+---------------+---------------+---------------|
+| src/SimpleStorage.sol            | 0.00% (0/7)   | 0.00% (0/4)   | 100.00% (0/0) | 0.00% (0/3)   |
+|----------------------------------+---------------+---------------+---------------+---------------|
+| Total                            | 10.42% (5/48) | 11.63% (5/43) | 0.00% (0/5)   | 14.29% (2/14) |
+╰----------------------------------+---------------+---------------+---------------+---------------╯
+*/
+```
+```
 forge script script/DeploySimpleStorage.s.sol --rpc-url $RPC_URL --private-key $PRIVATE_KEY --broadcast
 forge script script/<SCRIPT_NAME> --rpc-url <RPC_URL> --private-key <PRIVATE_KEY> --broadcast
 forge script // Run a smart contract as a script
